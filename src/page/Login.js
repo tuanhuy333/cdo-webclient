@@ -3,22 +3,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import { fetchDataLogin } from '../redux/actions/LoginAction'
 import { useHistory } from 'react-router-dom';
-import { Form, Input, Button, Checkbox } from 'antd';
+
 import "antd/dist/antd.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useFormik } from "formik";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import { useFormik,Formik } from "formik";
 import * as Yup from "yup";
-import { withFormik } from 'formik'
+
+import {
+    SubmitButton,
+    Input,
+    Checkbox,
+    ResetButton,
+    FormikDebug,
+    Form,
+    FormItem,
+} from "formik-antd"
+import { message, Button, Row, Col } from "antd"
 
 const Login = (props) => {
-    // let history = useHistory()
-    // if (props.loginData.isAuthUser) {
-    //     console.log("abc");
-    //     history.push({ pathname: '/home' })
-    // }
+    let history = useHistory()
+    if (props.loginData.isAuthUser) {
+        
+        history.push({ pathname: '/home' })
+    }
+
 
     
-    const { values, handleChange, handleSubmit, errors, touched, isSubmitting } = props;
     const formik = useFormik({
         initialValues: {
 
@@ -33,11 +43,20 @@ const Login = (props) => {
         }),
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
-          }
+        }
 
     });
 
+    const handleSubmitLogin=(values, actions) => {
+                    
+        message.info(JSON.stringify(values, null, 4))
 
+        // dispatch({ type: 'increment-counter' })
+        props.login(values.email, values.password);
+
+        actions.setSubmitting(false)
+        actions.resetForm()
+    }
     return (
         <>
             {/* <p>Login</p>
@@ -48,11 +67,11 @@ const Login = (props) => {
 
 
 
-            }}>Login</button> */}
+            }}>Login</button> 
             <div className="mt-10">
 
                 <div className="text-center" >
-                    {/* <img src={logo} width="120px" height="120px" /> */}
+                    
 
 
 
@@ -117,6 +136,65 @@ const Login = (props) => {
                     </div>
                 </div>
             </div>
+        */}
+
+            <Formik
+                initialValues={{
+
+                    email: "",
+                    password: "",
+                    remember: false,
+                }}
+                validationSchema={Yup.object({
+
+                    email: Yup.string().email('Invalid email address').required('Required'),
+                    password: Yup.string()
+                        .min(8, 'Must be 8 characters or more')
+                        .required('Required'),
+                })}
+                onSubmit={handleSubmitLogin}
+
+                render={() => (
+                    <Form
+                        style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
+                        labelCol={{ xs: 4 }}
+                        wrapperCol={{ xs: 20 }}
+                    >
+                        <div style={{ flex: 1 }} />
+                        <div style={{ background: "white", flex: 1, padding: 40 }}>
+
+                            <FormItem name="email" label="Email">
+                                <Input name="email" placeholder="Email" />
+                            </FormItem>
+                            <FormItem name="password" label="Password">
+                                <Input.Password name="password" placeholder="Password" />
+                            </FormItem>
+                            <FormItem
+                                name="remember"
+                                labelCol={{ xs: 4 }}
+                                wrapperCol={{ offset: 4, xs: 20 }}
+                            >
+                                <Checkbox name="remember">Remember Me</Checkbox>
+                                
+                            </FormItem>
+
+                            <Row style={{ marginTop: 60 }}>
+                                <Col offset={8}>
+                                    <Button.Group>
+                                        {/* <ResetButton>Reset</ResetButton> */}
+                                        <SubmitButton>Login</SubmitButton>
+                                    </Button.Group>
+                                </Col>
+                            </Row>
+                        </div>
+                        <pre style={{ flex: 1 }}>
+                            <FormikDebug />
+                        </pre>
+                    </Form>
+                )}
+            />
+
+
 
         </>
     )
@@ -141,5 +219,5 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
-//export default FormikForm;
+
 
