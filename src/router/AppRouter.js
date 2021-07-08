@@ -1,15 +1,19 @@
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-
-import React from 'react'
-import { BrowserRouter as Router, Switch, Link, Route, Redirect } from "react-router-dom";
-
-import Login from '../page/Login';
+import Signup from "../page/auth/Signup";
 
 export default function AppRouter() {
-    return (
-        <Router>
-            <Switch>
-                {/* <Route path='/home' render={() => {
+  return (
+    <Router>
+      <Switch>
+        {/* <Route path='/home' render={() => {
                     return localStorage.getItem("accessToken") ? <WelcomePage /> : <Redirect to='/' />
                 }}>
 
@@ -26,11 +30,10 @@ export default function AppRouter() {
                 <Route path="/employeeList1">
                     <EmployeeList />
                 </Route> */}
-                <Route path="/">
-                    <Login />
-                </Route>
-            </Switch>
-        </Router>
-    )
+        <Route path="/">
+          <Signup />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
-
