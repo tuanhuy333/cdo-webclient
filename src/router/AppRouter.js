@@ -9,11 +9,12 @@ export default function AppRouter() {
     return (
         <Router>
             <Switch>
-                {/* <Route path='/home' render={() => {
+              {/* <Route path='/home' render={() => {
                     return localStorage.getItem("accessToken") ? <WelcomePage /> : <Redirect to='/' />
                 }}>
 
-                </Route>
+                </Route> */}
+                   {/*
                 <Route path="/updateInfo">
                     <UpdateInformation />
                 </Route>
