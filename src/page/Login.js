@@ -22,11 +22,11 @@ import {
 import { message, Button, Row, Col } from "antd"
 
 const Login = (props) => {
-    let history = useHistory()
-    if (props.loginData.isAuthUser) {
+    // let history = useHistory()
+    // if (props.loginData.isAuthUser) {
 
-        history.push({ pathname: '/home' })
-    }
+    //     history.push({ pathname: '/home' })
+    // }
 
 
     const handleSubmitLogin = (values, actions) => {

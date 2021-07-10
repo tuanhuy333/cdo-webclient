@@ -5,31 +5,28 @@ import { BrowserRouter as Router, Switch, Link, Route, Redirect } from "react-ro
 
 import Login from '../page/Login';
 
+import HomePage from './../page/HomePage';
+import AboutPage from './../page/AboutPage';
+import PrivateRoute from '../router/PrivateRoute';
+import PublicRoute from '../router/PublicRoute';
+
+
+
 export default function AppRouter() {
     return (
         <Router>
             <Switch>
-              {/* <Route path='/home' render={() => {
-                    return localStorage.getItem("accessToken") ? <WelcomePage /> : <Redirect to='/' />
-                }}>
+                
+            
+               
+                <PublicRoute path="/login" component={Login}  exact={true}/>
+                
+                <PrivateRoute path="/home" component={HomePage} exact={true}/>
+                <PrivateRoute path="/aboutpage" component={AboutPage} exact={true} />
+                
 
-                </Route> */}
-                   {/*
-                <Route path="/updateInfo">
-                    <UpdateInformation />
-                </Route>
-                <Route path="/employeeList">
-                    <EmployeeListPage />
-                </Route>
-                <Route path="/image">
-                    <EditAvatar parentCallback={null} />
-                </Route>
-                <Route path="/employeeList1">
-                    <EmployeeList />
-                </Route> */}
-                <Route path="/">
-                    <Login />
-                </Route>
+                <Route path="*" render={() => <div>404 Error</div>} />
+
             </Switch>
         </Router>
     )

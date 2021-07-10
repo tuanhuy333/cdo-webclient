@@ -8,17 +8,19 @@ import {
 import Login from "../page/Login";
 
 
+
 const HomePage = () => {
 
         return (
                 <>
+                        <h1>HomePage</h1>
                         <Router>
                                 <ul>
                                         <li>
                                                 <Link to="/">Home</Link>
                                         </li>
                                         <li>
-                                                <Link to="/about">About</Link>
+                                                <Link to="/login">login</Link>
                                         </li>
                                         <li>
                                                 <Link to="/dashboard">Dashboard</Link>
@@ -28,8 +30,8 @@ const HomePage = () => {
                                         <Route exact path="/">
                                                 <Home />
                                         </Route>
-                                        <Route path="/about">
-                                                <About />
+                                        <Route path="/login">
+                                                <Login />
                                         </Route>
                                         <Route path="/dashboard">
                                                 <Dashboard />
