@@ -1,4 +1,4 @@
-// import React, { Suspense } from "react";
+import React, { Suspense } from "react";
 // import "./App.css";
 // import "../node_modules/antd/dist/antd.css";
 // import "./i18n";
@@ -11,29 +11,33 @@
 //         <AppRouter />
 //       </div>
 //     </Suspense>
-import React from 'react';
-import './App.css';
 
+import "./App.css";
 
+import AppRouter from "./router/AppRouter";
 
-import AppRouter from './router/AppRouter';
+import HomePage from "./page/HomePage";
+import Login from "./page/auth/Login";
 
-import HomePage from './page/HomePage';
- import Login from './page/Login';
+import { Provider } from "react-redux";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Link, Route, Redirect } from "react-router-dom";
-
-
-import configureStore from './redux/configureStore';
+import configureStore from "./redux/configureStore";
 const store = configureStore();
 
 function App() {
   return (
     <Provider store={store}>
-      <AppRouter/> 
+      <Suspense fallback="loading">
+        <AppRouter />
+      </Suspense>
     </Provider>
-   
   );
 }
 
