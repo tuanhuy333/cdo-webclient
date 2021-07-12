@@ -22,7 +22,7 @@ export default function AppRouter() {
                 <PublicRoute path="/login" component={Login}  exact={true}/>
                 
                 <PrivateRoute path="/home" component={HomePage} exact={true}/>
-                <PrivateRoute path="/aboutpage" component={AboutPage} exact={true} />
+                <PrivateRoute path="/aboutPage" component={AboutPage} exact={true} />
                 
 
                 <Route path="*" render={() => <div>404 Error</div>} />

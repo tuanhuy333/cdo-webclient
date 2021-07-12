@@ -20,7 +20,7 @@ const HomePage = () => {
                                                 <Link to="/">Home</Link>
                                         </li>
                                         <li>
-                                                <Link to="/login">login</Link>
+                                                <Link to="/about">About</Link>
                                         </li>
                                         <li>
                                                 <Link to="/dashboard">Dashboard</Link>
@@ -30,8 +30,8 @@ const HomePage = () => {
                                         <Route exact path="/">
                                                 <Home />
                                         </Route>
-                                        <Route path="/login">
-                                                <Login />
+                                        <Route path="/about">
+                                                <About />
                                         </Route>
                                         <Route path="/dashboard">
                                                 <Dashboard />
