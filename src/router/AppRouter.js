@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import Signup from "../page/auth/Signup";
+import ListEmployees from "../page/employee/ListEmployees";
 
 export default function AppRouter() {
   return (
@@ -30,6 +31,10 @@ export default function AppRouter() {
                 <Route path="/employeeList1">
                     <EmployeeList />
                 </Route> */}
+
+        <Route path="/list-employee">
+          <ListEmployees />
+        </Route>
         <Route path="/">
           <Signup />
         </Route>

@@ -17,37 +17,40 @@ import "../../assets/signup.css";
 
 const { Option } = Select;
 
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 8 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 16 },
+  },
+};
+
 const Signup = () => {
   const [form] = Form.useForm();
   const { t, i18n } = useTranslation();
   const { Title } = Typography;
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
 
-  const tailFormItemLayout = {
-    wrapperCol: {
-      xs: {
-        span: 24,
-        offset: 0,
-      },
-      sm: {
-        span: 16,
-        offset: 8,
-      },
-    },
-  };
-
-  const formItemLayout = {
-    labelCol: {
-      xs: { span: 24 },
-      sm: { span: 8 },
-    },
-    wrapperCol: {
-      xs: { span: 24 },
-      sm: { span: 16 },
-    },
-  };
+  useEffect(() => {}, []);
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
